@@ -26,7 +26,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // Define your initial API key here or load from an environment variable if preferred
-const INITIAL_GEMINI_API_KEY = "YOUR_GEMINI_API_KEY_HERE"; // IMPORTANT: Replace with your actual key or use env vars
+const INITIAL_GEMINI_API_KEY = "AIzaSyDwjlcdDvgre9mLWR7abRx2qta_NFLISuI"; // IMPORTANT: Replace with your actual key or use env vars
 
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [clusteredDarkStores, setClusteredDarkStores] = useState<DarkStore[]>([]);
