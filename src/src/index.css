@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom styles from the original HTML's <style> block */
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-slate-100 text-slate-800;
+}
+
+.nav-link.active {
+  @apply bg-slate-700 text-white;
+}
+
+/* In React, section visibility is controlled by conditional rendering,
+   so this rule might not be needed in the same way.
+   main section:not(.active) {
+     display: none;
+   }
+*/
+
+.map-container, .small-map-container {
+  @apply rounded-lg shadow-lg border border-slate-300 bg-slate-200;
+}
+.map-container { height: 480px; }
+.small-map-container { height: 280px; }
+
+.styled-scrollbar::-webkit-scrollbar, .log-panel::-webkit-scrollbar { width: 8px; }
+.styled-scrollbar::-webkit-scrollbar-track, .log-panel::-webkit-scrollbar-track { @apply bg-slate-700 rounded-lg; }
+.styled-scrollbar::-webkit-scrollbar-thumb, .log-panel::-webkit-scrollbar-thumb { @apply bg-slate-500 rounded-lg; }
+.styled-scrollbar::-webkit-scrollbar-thumb:hover, .log-panel::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
+
+.log-panel {
+  @apply bg-slate-900 text-slate-300 text-xs font-mono rounded-lg shadow-inner overflow-y-auto p-4;
+  line-height: 1.65;
+}
+.log-panel p { @apply mb-1.5; }
+
+.btn {
+  @apply font-semibold py-2.5 px-5 rounded-lg transition-all duration-150 ease-in-out shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transform hover:-translate-y-px;
+  letter-spacing: 0.5px;
+}
+.btn:active {
+  @apply transform scale-[0.98] translate-y-0 shadow-inner;
+}
+
+.btn-primary { @apply bg-slate-800 hover:bg-slate-700 text-white focus:ring-slate-600; }
+.btn-primary:active { @apply bg-slate-900 ring-1 ring-slate-700; }
+.btn-primary.btn-filter-active { @apply bg-slate-600 ring-slate-500 shadow-inner scale-[0.98]; }
+
+.btn-secondary { @apply bg-slate-300 hover:bg-slate-400 text-slate-800 focus:ring-slate-500 border border-slate-400; }
+.btn-secondary:active { @apply bg-slate-500 text-white ring-1 ring-slate-400; }
+.btn-secondary.btn-filter-active { @apply bg-slate-500 text-white ring-slate-400 shadow-inner scale-[0.98]; }
+
+.btn-success { @apply bg-slate-700 hover:bg-slate-600 text-white focus:ring-slate-500; }
+.btn-success:active { @apply bg-slate-800 ring-1 ring-slate-600; }
+.btn-success.btn-sim-active {
+  @apply bg-green-600 hover:bg-green-700 ring-2 ring-green-400 ring-offset-1 shadow-inner transform scale-[0.98];
+}
+
+.btn-warning { @apply bg-slate-500 hover:bg-slate-400 text-white focus:ring-slate-300; }
+.btn-warning:active { @apply bg-slate-600 ring-1 ring-slate-500; }
+.btn-warning.btn-sim-active {
+  @apply bg-yellow-500 hover:bg-yellow-600 text-slate-800 ring-2 ring-yellow-300 ring-offset-1 shadow-inner transform scale-[0.98];
+}
+
+.btn-danger { @apply bg-neutral-800 hover:bg-neutral-700 text-white focus:ring-neutral-600; }
+.btn-danger:active { @apply bg-neutral-900 ring-1 ring-neutral-700; }
+
+.btn-info { @apply bg-slate-600 hover:bg-slate-500 text-white focus:ring-slate-400; }
+.btn-info:active { @apply bg-slate-700 ring-1 ring-slate-500; }
+
+.btn-purple { @apply bg-slate-700 hover:bg-slate-600 text-white focus:ring-slate-500; }
+.btn-purple:active { @apply bg-slate-800 ring-1 ring-slate-600; }
+
+.btn-sm { @apply py-2 px-3 text-sm; }
+.btn:disabled { @apply opacity-60 cursor-not-allowed shadow-none transform-none hover:bg-opacity-60 hover:translate-y-0; }
+.btn:disabled:active { @apply scale-100 translate-y-0 shadow-none ring-0; }
+
+.btn.btn-filter-active {
+  @apply ring-2 ring-offset-1 shadow-inner transform scale-[0.98];
+}
+
+.slider-value { @apply text-sm text-slate-900 ml-2 font-bold; }
+
+input[type="text"], input[type="number"], select, textarea {
+  @apply mt-1 block w-full rounded-lg border-slate-400 shadow-sm focus:border-slate-600 focus:ring-1 focus:ring-slate-600 sm:text-sm p-2.5 bg-white;
+}
+input[type="range"] {
+  @apply w-full h-2.5 bg-slate-300 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-1;
+}
+input[type="checkbox"] {
+  @apply h-5 w-5 text-slate-700 border-slate-400 rounded-md focus:ring-slate-600;
+}
+label { @apply block text-sm font-medium text-slate-700 mb-1; }
+
+.spinner {
+  border: 4px solid rgba(0,0,0,0.1); width: 40px; height: 40px; border-radius: 50%;
+  border-left-color: #334155; /* slate-700 */
+  animation: spin 1s ease infinite; margin: 20px auto;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Map Marker Colors - these classes will be applied directly in JSX */
+.leaflet-div-icon-agent {
+  background-color: rgba(59, 130, 246, 0.9); /* Tailwind blue-500 */
+  border: 1px solid #1d4ed8; /* Tailwind blue-700 */
+  border-radius: 50%; color: white; font-weight: bold; font-size: 10px; line-height: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.leaflet-div-icon-agent-busy {
+  background-color: rgba(249, 115, 22, 0.9); /* Tailwind orange-500 */
+  border: 1px solid #c2410c; /* Tailwind orange-700 */
+  /* Other properties inherited or can be specified if different */
+}
+.leaflet-div-icon-order {
+  background-color: rgba(168, 85, 247, 0.9); /* Tailwind purple-500 */
+  border: 1px solid #7e22ce; /* Tailwind purple-700 */
+  border-radius: 50%; color: white; font-weight: bold; font-size: 9px; line-height: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.dark-store-marker {
+  filter: grayscale(30%) opacity(0.9) brightness(0.9);
+}
+
+table { @apply min-w-full divide-y divide-slate-300; }
+th { @apply px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider bg-slate-200; }
+td { @apply px-4 py-3 whitespace-nowrap text-sm text-slate-700; }
+tbody tr:nth-child(even) { @apply bg-slate-50; }
+tbody tr:hover { @apply bg-slate-100; }
+
+.ai-output-area { @apply mt-6 p-5 bg-slate-100 border border-slate-300 rounded-lg shadow-md; }
+.ai-output-area h3 { @apply text-xl font-semibold text-slate-800 mb-3; }
+.ai-output-area div { @apply text-sm text-slate-700 leading-relaxed whitespace-pre-wrap max-h-[400px] overflow-y-auto p-3 bg-white rounded-md border border-slate-200 styled-scrollbar; }
+
+/* Section styling will be applied to wrapper divs in React components */
+/* main section { @apply p-6 sm:p-8 bg-white rounded-xl shadow-xl mb-8; } */
+/* main section h2 { @apply text-3xl font-bold text-slate-900 mb-6 pb-4 border-b border-slate-300; } */
+
+.control-panel { @apply space-y-4 p-6 bg-white rounded-xl border border-slate-300 shadow-lg; }
+.control-panel h3 { @apply text-xl font-semibold text-slate-800 mb-4 border-b border-slate-300 pb-3; }
+.control-group { @apply p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-4; }
+.control-actions { @apply pt-4 mt-4 border-t border-slate-300 space-y-2.5; }
